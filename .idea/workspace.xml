@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="CaseStudy:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="eee5c5dc-63b3-4b2a-b6a1-2cc8185c6082" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_20.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/EnumStaffStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Staff.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/libs/mysql-connector-java-8.0.20.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/libs/taglibs-standard-impl-1.2.5.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/libs/taglibs-standard-spec-1.2.5.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/CaseStudy_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/CaseStudy_war_exploded.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/img/gaixinh-index.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/WEB-INF/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/img/gaixinh-index.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/img/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CaseStudy.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CaseStudy.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/service/DB_Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/DB_Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +28,19 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectId" id="1cvh2HBjNCBQMU54kgwjupumlsL" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -42,13 +54,21 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/libs/taglibs-standard-spec-1.2.5.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/WEB-INF/tags" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\CodeGym\Module3\Projects\CaseStudy\web\WEB-INF" />
+      <recent name="D:\CodeGym\Module3\Projects\CaseStudy\web" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\CodeGym\Module3\Projects\CaseStudy\web\WEB-INF\tags" />
+      <recent name="D:\CodeGym\Module3\Projects\CaseStudy\web" />
+      <recent name="D:\CodeGym\Module3\Projects\CaseStudy\web\WEB-INF\img" />
+      <recent name="D:\CodeGym\Module3\Projects\CaseStudy\web\WEB-INF\css" />
       <recent name="D:\CodeGym\Module3\Projects\CaseStudy\web\libs" />
     </key>
   </component>
@@ -141,6 +161,28 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -151,7 +193,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1591414766028</updated>
-      <workItem from="1591414772338" duration="9070000" />
+      <workItem from="1591414772338" duration="14762000" />
     </task>
     <servers />
   </component>

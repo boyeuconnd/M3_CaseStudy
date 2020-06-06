@@ -16,11 +16,11 @@ public class DB_Connection{
         return instance;
     }
 
-    protected Connection getConnection(){
+    public Connection getConnection(){
         Connection conn = null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(URL,USERNAME,PASSWORD);
+            conn = DriverManager.getConnection(MySQL_URL,USERNAME,PASSWORD);
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Exception when getConnection");
             e.printStackTrace();
@@ -28,7 +28,7 @@ public class DB_Connection{
         return conn;
     }
 
-    private final String  URL = "jdbc:mysql://localhost:3306/quanlydao";
+    private final String  MySQL_URL = "jdbc:mysql://localhost:3306/quanlydao";
     private final String USERNAME = "root";
     private final String PASSWORD = "1234";
 
