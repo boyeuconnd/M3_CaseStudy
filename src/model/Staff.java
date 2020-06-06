@@ -11,6 +11,15 @@ public class Staff {
 
     private String rank;
     private String status;
+    private String imgUrl;
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
     public int getId() {
         return id;
@@ -84,5 +93,17 @@ public class Staff {
         this.lastName = lastName;
         this.nickName = nickName;
         this.price = price;
+    }
+
+    public Staff(int id, String firstName, String lastName, String nickName, String description, double price, String rank, String status,String imgUrl) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.nickName = nickName;
+        this.description = description;
+        this.price = price;
+        this.rank = rank;
+        this.status = status;
+        this.imgUrl = imgUrl;
     }
 }
