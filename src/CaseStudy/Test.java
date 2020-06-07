@@ -1,6 +1,7 @@
+package CaseStudy;
 
-import model.EnumStaffRank;
-import model.Staff;
+import CaseStudy.model.EnumStaffRank;
+import CaseStudy.model.Staff;
 
 public class Test {
     public static void main(String[] args) {

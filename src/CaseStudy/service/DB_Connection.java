@@ -1,4 +1,4 @@
-package service;
+package CaseStudy.service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

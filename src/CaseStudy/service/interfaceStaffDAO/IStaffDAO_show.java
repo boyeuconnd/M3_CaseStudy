@@ -1,6 +1,6 @@
-package service;
+package CaseStudy.service.interfaceStaffDAO;
 
-import model.Staff;
+import CaseStudy.model.Staff;
 
 import java.util.List;
 

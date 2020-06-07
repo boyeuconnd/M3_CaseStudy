@@ -1,4 +1,4 @@
-package model;
+package CaseStudy.model;
 
 public class Staff {
 

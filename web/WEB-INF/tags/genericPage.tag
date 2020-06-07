@@ -11,6 +11,7 @@
 <%@attribute name="footer" fragment="true" %>
 <html>
 <head>
+    <title>Luxury Garden</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -21,7 +22,7 @@
 <body>
 <div id="pageheader">
     <nav class="navbar sticky-top navbar-expand-lg " style="background-color: #c4d9ff">
-        <a class="navbar-brand webBrand"  href="index.html">
+        <a class="navbar-brand webBrand"  href="/#">
             <img src="img/logo.png" width="50" height=50" class="d-inline-block align-center" alt="logo" loading="lazy">
             Luxury Garden
         </a>
@@ -56,7 +57,10 @@
             <form class="form-inline">
                 <button class="btn btn-success mr-sm-2" type="submit"><i class="fas fa-search"></i></button>
                 <input class="form-control mr-sm-4" type="search" placeholder="Tìm Đào tâm giao..." aria-label="Search">
-                <button class="btn btn-secondary " type="button"><i class="fas fa-user-friends"></i> Log In</button>
+                <a href="login">
+
+                    <button class="btn btn-secondary " type="button"><i class="fas fa-user-friends"></i> Log In</button>
+                </a>
 
             </form>
         </div>
