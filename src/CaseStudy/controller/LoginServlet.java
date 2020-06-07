@@ -17,7 +17,7 @@ import java.sql.Connection;
 public class LoginServlet extends HttpServlet {
 //    DB_Connection db_connection= DB_Connection.getInstance();
 //    Connection cnn = db_connection.getConnection();
-    StaffDAO staffDAO = new StaffDAO();
+//    StaffDAO staffDAO = new StaffDAO();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF-8");
@@ -26,11 +26,12 @@ public class LoginServlet extends HttpServlet {
         AccountManager accountManager = new AccountManager();
         RequestDispatcher dispatcher = null;
         if(accountManager.login(user,password)){
-            staffDAO.setPermision(1);
-            dispatcher = request.getRequestDispatcher("manager/manager.jsp");
+            StaffDAO.setPermision(1);
+            request.setAttribute("permision",StaffDAO.getPermision());
+            dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.forward(request,response);
         }else {
-            staffDAO.setPermision(0);
+            StaffDAO.setPermision(0);
             request.setAttribute("messenger","Account or password not correct!");
             dispatcher = request.getRequestDispatcher("layers/login.jsp");
             dispatcher.forward(request,response);

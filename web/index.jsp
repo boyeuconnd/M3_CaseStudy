@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="tg" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,16 +66,20 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
+
     <div class="col-2 d-none d-md-block left-bar border-right ">
-      <div class="list-group mt-lg-4">
-        <a href="#" class="list-group-item list-group-item-action active">
-          Side menu 1
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">Side menu 2</a>
-        <a href="#" class="list-group-item list-group-item-action">Side menu 3</a>
-        <a href="#" class="list-group-item list-group-item-action">Side menu 4</a>
-        <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Side menu disable</a>
-      </div>
+      <c:if test="${requestScope['permision']==1}">
+        <div class="list-group mt-lg-4">
+          <a href="staff?action=create" class="list-group-item list-group-item-action ">
+            Create
+          </a>
+          <a href="staff?action" class="list-group-item list-group-item-action">Show</a>
+          <a href="#" class="list-group-item list-group-item-action">Update</a>
+          <a href="#" class="list-group-item list-group-item-action">Delete</a>
+          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Side menu disable</a>
+        </div>
+
+      </c:if>
     </div>
     <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 defaultview">
