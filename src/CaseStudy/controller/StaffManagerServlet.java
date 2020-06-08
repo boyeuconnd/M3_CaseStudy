@@ -26,6 +26,7 @@ public class StaffManagerServlet extends HttpServlet {
                 createStaff(request,response);
                 break;
             case "update":
+                updateStaff(request,response);
                 break;
             case "delete":
                 break;
@@ -36,6 +37,27 @@ public class StaffManagerServlet extends HttpServlet {
 //        }catch (IOException svl){
 //            svl.printStackTrace();
 //        }
+    }
+
+    private void updateStaff(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        String nickName = request.getParameter("nickname");
+        String description = request.getParameter("description");
+        Double price = Double.parseDouble(request.getParameter("price"));
+        String rank = request.getParameter("staffRank");
+        String status = request.getParameter("staffStatus");
+        String img = request.getParameter("imgUrl");
+        staffDAO.updateById(id,new Staff(id,firstName,lastName,nickName,description,price,rank,status,img));
+        request.setAttribute("messenger","Staff Update");
+        try {
+            direction(request,response,"manager/update.jsp");
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void createStaff(HttpServletRequest request, HttpServletResponse response) {
@@ -72,6 +94,7 @@ public class StaffManagerServlet extends HttpServlet {
                     showCreateForm(request,response);
                     break;
                 case "update":
+                    showUpdateForm(request,response);
                     break;
                 case "delete":
                     break;
@@ -83,6 +106,19 @@ public class StaffManagerServlet extends HttpServlet {
             sql.printStackTrace();
         }
 
+    }
+
+    private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Staff updateStaff = staffDAO.selectById(id);
+        request.setAttribute("updateStaff",updateStaff);
+        try {
+            direction(request,response,"manager/update.jsp");
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
