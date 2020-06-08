@@ -18,21 +18,22 @@
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6 ml-md-auto">
+                    <h1>Welcome Admin!</h1>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="staff">Hiển thị toàn bộ Staff</a>
+                            <a class="nav-link" href="staff?action=show">Hiển thị toàn bộ Staff</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="staff?action=create">Create</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Update</a>
+                            <a class="nav-link" href="staff?action=show">Update</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Delete</a>
+                            <a class="nav-link" href="staff?action=show">Delete</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                            <a class="nav-link " href="logout" >Logout</a>
                         </li>
                     </ul>
 

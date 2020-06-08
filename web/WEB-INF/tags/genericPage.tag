@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@tag description="Overall Page template" pageEncoding="UTF-8"%>
 <%@attribute name="header" fragment="true" %>
 <%@attribute name="footer" fragment="true" %>
@@ -58,8 +59,28 @@
                 <button class="btn btn-success mr-sm-2" type="submit"><i class="fas fa-search"></i></button>
                 <input class="form-control mr-sm-4" type="search" placeholder="Tìm Đào tâm giao..." aria-label="Search">
                 <a href="login">
+                        <%
+                            HttpSession ses = request.getSession();
+                            Boolean islogin = (Boolean)ses.getAttribute("isLogin");
+                        %>
+                        <c:set var="login" value="<%=islogin%>"/>
+                        <c:choose>
+                            <c:when test="${login==null}">
+                                <button class="btn btn-secondary" type="button">
+                                    <i class="fas fa-user-friends"></i> Log In
 
-                    <button class="btn btn-secondary " type="button"><i class="fas fa-user-friends"></i> Log In</button>
+                                </button>
+                            </c:when>
+                            <c:when test="${login!=null}">
+                                <button class="btn btn-secondary disabled" type="button">
+                                    <i class="fas fa-user-friends"></i> Admin
+
+                                </button>
+
+                            </c:when>
+
+                        </c:choose>
+
                 </a>
 
             </form>

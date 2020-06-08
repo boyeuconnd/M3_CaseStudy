@@ -10,14 +10,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 
 @WebServlet(name = "LoginServlet",urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
-//    DB_Connection db_connection= DB_Connection.getInstance();
-//    Connection cnn = db_connection.getConnection();
-//    StaffDAO staffDAO = new StaffDAO();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF-8");
@@ -26,12 +25,12 @@ public class LoginServlet extends HttpServlet {
         AccountManager accountManager = new AccountManager();
         RequestDispatcher dispatcher = null;
         if(accountManager.login(user,password)){
-            StaffDAO.setPermision(1);
-            request.setAttribute("permision",StaffDAO.getPermision());
-            dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.forward(request,response);
+            HttpSession session = request.getSession();
+            session.setAttribute("isLogin",true);
+//            dispatcher = request.getRequestDispatcher("manager/manager.jsp");
+//            dispatcher.forward(request,response);
+            response.sendRedirect("staff?action");
         }else {
-            StaffDAO.setPermision(0);
             request.setAttribute("messenger","Account or password not correct!");
             dispatcher = request.getRequestDispatcher("layers/login.jsp");
             dispatcher.forward(request,response);

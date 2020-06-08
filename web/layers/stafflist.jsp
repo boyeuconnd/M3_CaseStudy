@@ -42,10 +42,12 @@
                                     <td><c:out value="${staff.getNickName()}"/></td>
                                     <td><c:out value="${staff.getDescription()}"/></td>
                                     <td><c:out value="${staff.getPrice()}"/></td>
-                                    <td><c:out value="${staff.getStatus()}"/></td>
                                     <td><c:out value="${staff.getRank()}"/></td>
+                                    <td><c:out value="${staff.getStatus()}"/></td>
 <%--                                    <td><c:out value="${staff.getImgUrl()}"/></td>--%>
                                     <td><img src="<c:out value="${staff.getImgUrl()}"/>" alt="girl<c:out value="${staff.getId()}"/>"></td>
+                                    <td><a href="staff?action=update&id=${staff.getId()}">Update Info</a></td>
+                                    <td><a href="staff?action=delete&id=${staff.getId()}">Delete</a></td>
                                 </tr>
                             </c:forEach>
 

@@ -13,16 +13,6 @@ import java.util.List;
 public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create, IStaffDAO_selectById, IStaffDAO_updateById {
     DB_Connection db_connection = DB_Connection.getInstance();
 
-    public static int getPermision() {
-        return permision;
-    }
-
-    public static void setPermision(int input) {
-        permision = input;
-    }
-
-    protected static int permision = 0;
-
     @Override
     public List<Staff> showAllStaff() {
         List<Staff> staffList = new ArrayList<>();
@@ -53,7 +43,6 @@ public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create, ISt
 
     @Override
     public void create(Staff staff) {
-        if (getPermision() == 1) {
             Connection cnn = db_connection.getConnection();
             try {
                 PreparedStatement pstm = cnn.prepareStatement(INSERT_STAFF);
@@ -73,9 +62,6 @@ public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create, ISt
                 e.printStackTrace();
             }
 
-        } else {
-            throw new RuntimeException("Do not have permision");
-        }
     }
 
     @Override

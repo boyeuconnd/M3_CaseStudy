@@ -40,7 +40,7 @@
           THUÊ ĐÀO
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" style="color:hotpink;" href="staff">ĐÀO SIÊU PHẨM</a>
+          <a class="dropdown-item" style="color:hotpink;" href="#">ĐÀO SIÊU PHẨM</a>
           <a class="dropdown-item" href="#">ĐÀO VIP</a>
           <a class="dropdown-item" href="#">ĐÀO BASIC</a>
           <div class="dropdown-divider"></div>
@@ -65,21 +65,19 @@
   </div>
 </nav>
 <div class="container-fluid">
-  <div class="row">
+  <div  class="row">
 
-    <div class="col-2 d-none d-md-block left-bar border-right ">
-      <c:if test="${requestScope['permision']==1}">
+    <div style="visibility: hidden" class="col-2 d-none d-md-block left-bar border-right ">
         <div class="list-group mt-lg-4">
           <a href="staff?action=create" class="list-group-item list-group-item-action ">
             Create
           </a>
           <a href="staff?action" class="list-group-item list-group-item-action">Show</a>
-          <a href="#" class="list-group-item list-group-item-action">Update</a>
-          <a href="#" class="list-group-item list-group-item-action">Delete</a>
+          <a href="staff?action" class="list-group-item list-group-item-action">Update</a>
+          <a href="staff?action" class="list-group-item list-group-item-action">Delete</a>
           <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Side menu disable</a>
         </div>
 
-      </c:if>
     </div>
     <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 defaultview">
