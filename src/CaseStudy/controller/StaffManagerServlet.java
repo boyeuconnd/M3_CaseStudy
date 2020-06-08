@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -98,22 +99,51 @@ public class StaffManagerServlet extends HttpServlet {
                     break;
                 case "delete":
                     break;
-                default:
+                case "show":
                     listStaff(request,response);
+                    break;
+                default:
+                    showManagerMenu(request,response);
                     break;
             }
         }catch (SQLException sql){
             sql.printStackTrace();
         }
 
+
     }
+
+    private void showManagerMenu(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("manager/manager.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("layers/login.jsp");
+//        dispatcher.forward(request, response);
+
 
     private void showUpdateForm(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         Staff updateStaff = staffDAO.selectById(id);
         request.setAttribute("updateStaff",updateStaff);
         try {
-            direction(request,response,"manager/update.jsp");
+            HttpSession session = request.getSession();
+            if(session.getAttribute("isLogin")!=null){
+                Boolean isLogin = (Boolean)session.getAttribute("isLogin");
+                if(isLogin){
+
+                    direction(request,response,"manager/update.jsp");
+                } else {
+                    response.sendRedirect("login");
+                }
+            } else {
+                response.sendRedirect("login");
+            }
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -122,8 +152,22 @@ public class StaffManagerServlet extends HttpServlet {
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
+
         try {
-            direction(request,response,"manager/create.jsp");
+            HttpSession session = request.getSession();
+            if(session.getAttribute("isLogin")!=null){
+                Boolean isLogin = (Boolean)session.getAttribute("isLogin");
+                if(isLogin){
+
+                    direction(request,response,"manager/create.jsp");
+                } else {
+                    response.sendRedirect("login");
+                }
+            } else {
+                response.sendRedirect("login");
+            }
+
+
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
