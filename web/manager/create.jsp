@@ -100,6 +100,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
+            <a href="staff?action"><button type="button" class="btn btn-primary">Manager Menu</button></a>
 <%--            <a href="/"></a>--%>
         </div>
 

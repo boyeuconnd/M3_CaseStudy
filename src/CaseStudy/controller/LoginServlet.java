@@ -27,8 +27,7 @@ public class LoginServlet extends HttpServlet {
         if(accountManager.login(user,password)){
             HttpSession session = request.getSession();
             session.setAttribute("isLogin",true);
-//            dispatcher = request.getRequestDispatcher("manager/manager.jsp");
-//            dispatcher.forward(request,response);
+
             response.sendRedirect("staff?action");
         }else {
             request.setAttribute("messenger","Account or password not correct!");

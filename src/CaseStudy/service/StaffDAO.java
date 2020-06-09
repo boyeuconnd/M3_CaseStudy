@@ -1,16 +1,13 @@
 package CaseStudy.service;
 
 import CaseStudy.model.Staff;
-import CaseStudy.service.interfaceStaffDAO.IStaffDAO_create;
-import CaseStudy.service.interfaceStaffDAO.IStaffDAO_selectById;
-import CaseStudy.service.interfaceStaffDAO.IStaffDAO_show;
-import CaseStudy.service.interfaceStaffDAO.IStaffDAO_updateById;
+import CaseStudy.service.interfaceStaffDAO.*;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create, IStaffDAO_selectById, IStaffDAO_updateById {
+public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create, IStaffDAO_selectById, IStaffDAO_updateById, IStaffDAO_deleteById {
     DB_Connection db_connection = DB_Connection.getInstance();
 
     @Override
@@ -106,6 +103,19 @@ public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create, ISt
             pstm.setString(7,staff.getStatus());
             pstm.setString(8,staff.getImgUrl());
             pstm.setInt(9,staff.getId());
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public void deleteById(int id) {
+        Connection cnn = db_connection.getConnection();
+        try {
+            PreparedStatement pstm = cnn.prepareStatement(DELETE_BY_ID);
+            pstm.setInt(1,id);
             pstm.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

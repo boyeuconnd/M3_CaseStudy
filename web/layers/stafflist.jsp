@@ -10,6 +10,8 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:genericPage>
     <jsp:attribute name="header">
+        <h1 class="my-lg-5" style="text-align: center">List of staff</h1>
+
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -18,9 +20,9 @@
             <div class="row">
 <%--                <div class="col-3"></div>--%>
                 <div class="col-12 align-self-center mt-lg-5" >
+                    <a href="staff?action"><button type="button" class="btn btn-primary">Manager Menu</button></a>
 
 
-                    <h1>List of staff</h1>
                     <form method="post">
                         <table border="1px">
                             <tr>
