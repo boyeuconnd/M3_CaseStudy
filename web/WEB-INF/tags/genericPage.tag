@@ -23,9 +23,14 @@
 <body>
 <div id="pageheader">
     <nav class="navbar sticky-top navbar-expand-lg " style="background-color: #c4d9ff">
-        <a class="navbar-brand webBrand"  href="/#">
+        <a class="navbar-brand webBrand"  href="/">
             <img src="img/logo.png" width="50" height=50" class="d-inline-block align-center" alt="logo" loading="lazy">
-            Luxury Garden
+            <span style="font-family: 'Arial',cursive;
+    font-size: 25px;
+    font-weight: bold;
+    background: -webkit-linear-gradient(#ff38db,#fff838);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;">Luxury Garden</span>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fas fa-angle-double-down" style="color: #e83e8c"></i></span>
@@ -41,7 +46,7 @@
                         THUÊ ĐÀO
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" style="color:hotpink;" href="thue_dao/sieupham.html">ĐÀO SIÊU PHẨM</a>
+                        <a class="dropdown-item" style="color:hotpink;" href="view?rank=ultra">ĐÀO SIÊU PHẨM</a>
                         <a class="dropdown-item" href="#">ĐÀO VIP</a>
                         <a class="dropdown-item" href="#">ĐÀO BASIC</a>
                         <div class="dropdown-divider"></div>
@@ -58,30 +63,29 @@
             <form class="form-inline">
                 <button class="btn btn-success mr-sm-2" type="submit"><i class="fas fa-search"></i></button>
                 <input class="form-control mr-sm-4" type="search" placeholder="Tìm Đào tâm giao..." aria-label="Search">
-                <a href="login">
-                        <%
-                            HttpSession ses = request.getSession();
-                            Boolean islogin = (Boolean)ses.getAttribute("isLogin");
-                        %>
-                        <c:set var="login" value="<%=islogin%>"/>
-                        <c:choose>
-                            <c:when test="${login==null}">
-                                <button class="btn btn-secondary" type="button">
-                                    <i class="fas fa-user-friends"></i> Log In
+                <%
+                    HttpSession ses = request.getSession();
+                    Boolean islogin = (Boolean)ses.getAttribute("isLogin");
+                %>
+                <c:set var="login" value="<%=islogin%>"/>
+                <c:choose>
+                    <c:when test="${login==null}">
+                        <a href="login">
+                            <button class="btn btn-secondary" type="button">
+                                <i class="fas fa-user-friends"></i> Log In
 
-                                </button>
-                            </c:when>
-                            <c:when test="${login!=null}">
-                                <button class="btn btn-secondary disabled" type="button">
-                                    <i class="fas fa-user-friends"></i> Admin
+                            </button>
+                        </a>
+                    </c:when>
+                    <c:when test="${login!=null}">
+                        <button class="btn btn-secondary disabled" type="button">
+                            <i class="fas fa-user-friends"></i> Admin
 
-                                </button>
+                        </button>
 
-                            </c:when>
+                    </c:when>
 
-                        </c:choose>
-
-                </a>
+                </c:choose>
 
             </form>
         </div>

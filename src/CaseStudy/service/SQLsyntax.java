@@ -8,4 +8,5 @@ public interface SQLsyntax {
     String DELETE_BY_ID = "DELETE FROM staff WHERE id = ?;";
     String UPDATE_STAFF = "UPDATE staff SET firstName=?,lastName=?,nickName=?,description=?,price=?," +
             "staffRank=?,staffStatus=?,img_url=? WHERE id=?;";
+    String SELECT_BY_RANK = "SELECT * FROM staff WHERE staffRank = ?;";
 }
