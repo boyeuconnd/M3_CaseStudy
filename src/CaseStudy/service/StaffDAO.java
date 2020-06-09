@@ -131,7 +131,7 @@ public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create,
         try {
             PreparedStatement pstm = cnn.prepareStatement(SELECT_BY_RANK);
             pstm.setString(1,rank.toString());
-            ResultSet resultSet = pstm.executeQuery(SHOW_ALL_STAFF);
+            ResultSet resultSet = pstm.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String firstName = resultSet.getString("firstName");
