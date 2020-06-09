@@ -1,5 +1,6 @@
 package CaseStudy.service;
 
+import CaseStudy.model.EnumStaffRank;
 import CaseStudy.model.Staff;
 import CaseStudy.service.interfaceStaffDAO.*;
 
@@ -7,7 +8,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create, IStaffDAO_selectById, IStaffDAO_updateById, IStaffDAO_deleteById {
+public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create,
+        IStaffDAO_selectById, IStaffDAO_updateById, IStaffDAO_deleteById, IStaff_DAO_selectByRank {
     DB_Connection db_connection = DB_Connection.getInstance();
 
     @Override
@@ -120,5 +122,34 @@ public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create, ISt
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Staff> selectByStaff(EnumStaffRank rank) {
+        List<Staff> ultraList = new ArrayList<>();
+        Connection cnn = db_connection.getConnection();
+        try {
+            PreparedStatement pstm = cnn.prepareStatement(SELECT_BY_RANK);
+            pstm.setString(1,rank.toString());
+            ResultSet resultSet = pstm.executeQuery(SHOW_ALL_STAFF);
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String firstName = resultSet.getString("firstName");
+                String lastName = resultSet.getString(3);
+                String nickName = resultSet.getString(4);
+                String description = resultSet.getString(5);
+                double price = resultSet.getDouble(6);
+                String staffRank = resultSet.getString("staffRank");
+                String status = resultSet.getString("staffStatus");
+                String img = resultSet.getString("img_url");
+                ultraList.add(new Staff(id, firstName, lastName, nickName, description, price, staffRank, status, img));
+
+            }
+        } catch (SQLException e) {
+            System.err.println("Error when selectByRank");
+            e.printStackTrace();
+        }
+
+        return ultraList;
     }
 }

@@ -24,7 +24,7 @@
 
 
                     <form method="post">
-                        <table border="1px">
+                        <table border="1px" style="max-width: 100%">
                             <tr>
                                 <th>ID</th>
                                 <th>FirstName</th>
