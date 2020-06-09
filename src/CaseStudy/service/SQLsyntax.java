@@ -5,7 +5,7 @@ public interface SQLsyntax {
     String SHOW_ALL_STAFF = "SELECT * FROM staff;";
     String INSERT_STAFF ="INSERT INTO staff(id,firstName,lastName,nickName," +
             "description,price,staffRank,staffStatus,img_url) VALUES (?,?,?,?,?,?,?,?,?);";
-    String DELETE_STAFF = "DELETE FROM staff WHERE id = ?;";
+    String DELETE_BY_ID = "DELETE FROM staff WHERE id = ?;";
     String UPDATE_STAFF = "UPDATE staff SET firstName=?,lastName=?,nickName=?,description=?,price=?," +
             "staffRank=?,staffStatus=?,img_url=? WHERE id=?;";
 }

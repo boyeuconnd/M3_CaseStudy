@@ -30,6 +30,7 @@ public class StaffManagerServlet extends HttpServlet {
                 updateStaff(request,response);
                 break;
             case "delete":
+                deleteStaff(request, response);
                 break;
             default:
                 break;
@@ -38,6 +39,19 @@ public class StaffManagerServlet extends HttpServlet {
 //        }catch (IOException svl){
 //            svl.printStackTrace();
 //        }
+    }
+
+    private void deleteStaff(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        staffDAO.deleteById(id);
+        request.setAttribute("messenger","Staff Deleted");
+        try {
+            direction(request,response,"manager/managerMenu.jsp");
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateStaff(HttpServletRequest request, HttpServletResponse response) {
@@ -98,6 +112,7 @@ public class StaffManagerServlet extends HttpServlet {
                     showUpdateForm(request,response);
                     break;
                 case "delete":
+                    showDeleleForm(request,response);
                     break;
                 case "show":
                     listStaff(request,response);
@@ -113,8 +128,23 @@ public class StaffManagerServlet extends HttpServlet {
 
     }
 
+    private void showDeleleForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        Staff deleteStaff = staffDAO.selectById(id);
+        request.setAttribute("deleteStaff",deleteStaff);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("manager/delete.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void showManagerMenu(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("manager/manager.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("manager/managerMenu.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

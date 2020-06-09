@@ -19,6 +19,12 @@
                 <div class="col-3"></div>
                 <div class="col-6 ml-md-auto">
                     <h1>Welcome Admin!</h1>
+
+                    <p style="text-align: center;color: green;font-size: 25px">
+                        <c:if test="${requestScope['messenger']!=null}">
+                            <c:out value="${requestScope['messenger']}"/>
+                        </c:if>
+                    </p>
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link" href="staff?action=show">Hiển thị toàn bộ Staff</a>
