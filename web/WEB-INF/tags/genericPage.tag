@@ -69,22 +69,6 @@
                 %>
                 <c:set var="login" value="<%=islogin%>"/>
                 <c:choose>
-                    <c:when test="${login==false}">
-                        <a href="login">
-                            <button class="btn btn-secondary" type="button">
-                                <i class="fas fa-user-friends"></i> Log In
-
-                            </button>
-                        </a>
-                    </c:when>
-                    <c:when test="${login==null}">
-                        <a href="login">
-                            <button class="btn btn-secondary" type="button">
-                                <i class="fas fa-user-friends"></i> Log In
-
-                            </button>
-                        </a>
-                    </c:when>
                     <c:when test="${login==true}">
                         <%String displayName = ses.getAttribute("displayName").toString();%>
                         <a href="staff?action">
@@ -96,6 +80,14 @@
                         </a>
 
                     </c:when>
+                    <c:otherwise>
+                        <a href="login">
+                            <button class="btn btn-secondary" type="button">
+                                <i class="fas fa-user-friends"></i> Log In
+
+                            </button>
+                        </a>
+                    </c:otherwise>
 
                 </c:choose>
 
