@@ -47,8 +47,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" style="color:hotpink;" href="view?rank=ultra">ĐÀO SIÊU PHẨM</a>
-          <a class="dropdown-item" href="#">ĐÀO VIP</a>
-          <a class="dropdown-item" href="#">ĐÀO BASIC</a>
+          <a class="dropdown-item" href="view?rank=vip">ĐÀO VIP</a>
+          <a class="dropdown-item" href="view?rank=basic">ĐÀO BASIC</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">ĐÀO DISCOUNT</a>
         </div>
@@ -77,11 +77,23 @@
             </button>
           </a>
         </c:when>
-        <c:when test="${login!=null}">
-          <button class="btn btn-secondary disabled" type="button">
-            <i class="fas fa-user-friends"></i> Admin
+        <c:when test="${login==false}">
+          <a href="login">
+            <button class="btn btn-secondary" type="button">
+              <i class="fas fa-user-friends"></i> Log In
 
-          </button>
+            </button>
+          </a>
+        </c:when>
+        <c:when test="${login==true}">
+          <%String displayName = ses.getAttribute("displayName").toString();%>
+          <a href="staff?action">
+            <button class="btn btn-secondary disabled" type="button">
+
+              <i class="fas fa-user-friends"></i> <%=displayName%>
+
+            </button>
+          </a>
 
         </c:when>
 

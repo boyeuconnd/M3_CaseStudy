@@ -1,5 +1,6 @@
 package CaseStudy.controller;
 
+import CaseStudy.model.Customer;
 import CaseStudy.service.DB_Connection;
 import CaseStudy.service.StaffDAO;
 import CaseStudy.service.account.AccountManager;
@@ -20,14 +21,16 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF-8");
-        String user = request.getParameter("user");
+        String userName = request.getParameter("user");
         String password = request.getParameter("password");
         AccountManager accountManager = new AccountManager();
         RequestDispatcher dispatcher = null;
-        if(accountManager.login(user,password)){
+        Customer loginCustomer = accountManager.login(userName,password);
+        if(loginCustomer!=null){
             HttpSession session = request.getSession();
             session.setAttribute("isLogin",true);
-
+            session.setAttribute("role",loginCustomer.getRole());
+            session.setAttribute("displayName",loginCustomer.getAccount());
             response.sendRedirect("staff?action");
         }else {
             request.setAttribute("messenger","Account or password not correct!");
