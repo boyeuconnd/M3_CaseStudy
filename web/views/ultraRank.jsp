@@ -99,22 +99,6 @@
                 %>
                 <c:set var="login" value="<%=islogin%>"/>
                 <c:choose>
-                    <c:when test="${login==null}">
-                        <a href="login">
-                            <button class="btn btn-secondary" type="button">
-                                <i class="fas fa-user-friends"></i> Log In
-
-                            </button>
-                        </a>
-                    </c:when>
-                    <c:when test="${login==false}">
-                        <a href="login">
-                            <button class="btn btn-secondary" type="button">
-                                <i class="fas fa-user-friends"></i> Log In
-
-                            </button>
-                        </a>
-                    </c:when>
                     <c:when test="${login==true}">
                         <%String displayName = ses.getAttribute("displayName").toString();%>
                         <a href="staff?action">
@@ -126,6 +110,14 @@
                         </a>
 
                     </c:when>
+                    <c:otherwise>
+                        <a href="login">
+                            <button class="btn btn-secondary" type="button">
+                                <i class="fas fa-user-friends"></i> Log In
+
+                            </button>
+                        </a>
+                    </c:otherwise>
 
                 </c:choose>
 
@@ -138,15 +130,31 @@
 
     <div class="row">
         <div class="col-2 d-none d-md-block left-bar border-right ">
-            <div class="list-group mt-lg-4">
-                <a href="#" class="list-group-item list-group-item-action active">
-                    Side menu 1
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">Side menu 2</a>
-                <a href="#" class="list-group-item list-group-item-action">Side menu 3</a>
-                <a href="#" class="list-group-item list-group-item-action">Side menu 4</a>
-                <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Side menu disable</a>
-            </div>
+            <c:choose>
+                <c:when test="${login==true}">
+                    <div class="list-group mt-lg-4">
+                        <a href="#" class="list-group-item list-group-item-action ">Cập nhật thông tin</a>
+                        <a href="#" class="list-group-item list-group-item-action">Lịch sử giao dịch</a>
+                        <a href="#" class="list-group-item list-group-item-action">Đặt Hàng</a>
+                        <a href="#" class="list-group-item list-group-item-action">Voucher, khuyến mại</a>
+                        <a href="/logout" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Log Out</a>
+                    </div>
+
+
+                </c:when>
+                <c:otherwise>
+                    <div class="list-group mt-lg-4">
+                        <a href="https://vnreview.vn/" class="list-group-item list-group-item-action ">
+                            Tin Tức
+                        </a>
+                        <a href="https://genk.vn/" class="list-group-item list-group-item-action">Đọc Báo</a>
+                        <a href="https://divineshop.vn/" class="list-group-item list-group-item-action">Mua Game Bản Quyền</a>
+                        <a href="http://www.xiuren.org/" class="list-group-item list-group-item-action">Người Mẫu</a>
+                        <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Liên hệ với chúng tôi</a>
+                    </div>
+                </c:otherwise>
+
+            </c:choose>
         </div>
         <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
             <div class="row">
@@ -161,7 +169,18 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-outline-danger btn-block mt-sm-2" type="submit">Sở hữu ngay</button>
+                        <c:choose>
+                            <c:when test="${staff.getStatus()=='free'}">
+                                <a style="text-decoration: none" href="customer?action=hide&id=${staff.getId()}">
+                                    <button class="btn btn-outline-danger btn-block mt-sm-2" type="submit">Sở hữu ngay</button>
+                                </a>
+                            </c:when>
+                            <c:otherwise>
+                                <button class="btn btn-outline-danger btn-block mt-sm-2 disabled" type="submit">Em Bận Rồi</button>
+                            </c:otherwise>
+                        </c:choose>
+
+
                     </div>
                 </c:forEach>
 

@@ -31,7 +31,11 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("isLogin",true);
             session.setAttribute("role",loginCustomer.getRole());
             session.setAttribute("displayName",loginCustomer.getAccount());
-            response.sendRedirect("staff?action");
+            if(loginCustomer.getRole()==1){
+                response.sendRedirect("staff?action");
+            }else {
+                response.sendRedirect("/");
+            }
         }else {
             request.setAttribute("messenger","Account or password not correct!");
             dispatcher = request.getRequestDispatcher("layers/login.jsp");

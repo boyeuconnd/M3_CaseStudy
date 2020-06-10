@@ -47,8 +47,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" style="color:hotpink;" href="view?rank=ultra">ĐÀO SIÊU PHẨM</a>
-          <a class="dropdown-item" href="view?rank=vip">ĐÀO VIP</a>
-          <a class="dropdown-item" href="view?rank=basic">ĐÀO BASIC</a>
+          <a class="dropdown-item" style="color:hotpink;" href="view?rank=vip">ĐÀO VIP</a>
+          <a class="dropdown-item" style="color:hotpink;" href="view?rank=basic">ĐÀO BASIC</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">ĐÀO DISCOUNT</a>
         </div>
@@ -69,22 +69,6 @@
       %>
       <c:set var="login" value="<%=islogin%>"/>
       <c:choose>
-        <c:when test="${login==null}">
-          <a href="login">
-            <button class="btn btn-secondary" type="button">
-              <i class="fas fa-user-friends"></i> Log In
-
-            </button>
-          </a>
-        </c:when>
-        <c:when test="${login==false}">
-          <a href="login">
-            <button class="btn btn-secondary" type="button">
-              <i class="fas fa-user-friends"></i> Log In
-
-            </button>
-          </a>
-        </c:when>
         <c:when test="${login==true}">
           <%String displayName = ses.getAttribute("displayName").toString();%>
           <a href="staff?action">
@@ -96,6 +80,14 @@
           </a>
 
         </c:when>
+        <c:otherwise>
+          <a href="login">
+            <button class="btn btn-secondary" type="button">
+              <i class="fas fa-user-friends"></i> Log In
+
+            </button>
+          </a>
+        </c:otherwise>
 
       </c:choose>
 
@@ -103,26 +95,43 @@
     </form>
   </div>
 </nav>
-<div class="container-fluid">
+<div class="container">
   <div  class="row">
 
-    <div style="visibility: hidden" class="col-2 d-none d-md-block left-bar border-right ">
-        <div class="list-group mt-lg-4">
-          <a href="staff?action=create" class="list-group-item list-group-item-action ">
-            Create
-          </a>
-          <a href="staff?action" class="list-group-item list-group-item-action">Show</a>
-          <a href="staff?action" class="list-group-item list-group-item-action">Update</a>
-          <a href="staff?action" class="list-group-item list-group-item-action">Delete</a>
-          <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Side menu disable</a>
-        </div>
+    <div class="col-2 d-none d-md-block left-bar border-right ">
+      <c:choose>
+        <c:when test="${login==true}">
+          <div class="list-group mt-lg-4">
+            <a href="#" class="list-group-item list-group-item-action ">Cập nhật thông tin</a>
+            <a href="#" class="list-group-item list-group-item-action">Lịch sử giao dịch</a>
+            <a href="#" class="list-group-item list-group-item-action">Đặt Hàng</a>
+            <a href="#" class="list-group-item list-group-item-action">Voucher, khuyến mại</a>
+            <a href="/logout" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Log Out</a>
+          </div>
+
+
+        </c:when>
+        <c:otherwise>
+          <div class="list-group mt-lg-4">
+            <a href="https://vnreview.vn/" class="list-group-item list-group-item-action ">
+              Tin Tức
+            </a>
+            <a href="https://genk.vn/" class="list-group-item list-group-item-action">Đọc Báo</a>
+            <a href="https://divineshop.vn/" class="list-group-item list-group-item-action">Mua Game Bản Quyền</a>
+            <a href="http://www.xiuren.org/" class="list-group-item list-group-item-action">Người Mẫu</a>
+            <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Liên hệ với chúng tôi</a>
+          </div>
+        </c:otherwise>
+
+      </c:choose>
+
 
     </div>
     <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 defaultview">
         <div class="defaultview_defaultview mt-5">
           <h2 class="my-2" style="text-align: center">Chào Mừng tới với LUXURY GARDEN!</h2>
-          <h2 style="text-align: justify;"><span style="font-size: 11pt; color: #000000;"><strong><span style="font-family: verdana, geneva, sans-serif;">Dịch vụ cho thuê Đào, Quất, Cam, Quýt... <a href="thue_dao/sieupham">chơi game</a> PUGB, Liên Minh Huyền Thoại, Liên Quân giá chỉ từ 10.000đ/h tại Luxury Garden - Nơi kết nối cộng đồng gamer Việt trong và ngoài nước chia sẻ đam mê và chơi game giải trí lành mạnh uy tín chất lượng trên toàn Thế Giới</span></strong></span></h2>
+          <h2 style="text-align: justify;"><span style="font-size: 11pt; color: #000000;"><strong><span style="font-family: verdana, geneva, sans-serif;">Dịch vụ cho thuê Đào, Quất, Cam, Quýt... <a href="login">chơi game</a> PUGB, Liên Minh Huyền Thoại, Liên Quân giá chỉ từ 10.000đ/h tại Luxury Garden - Nơi kết nối cộng đồng gamer Việt trong và ngoài nước chia sẻ đam mê và chơi game giải trí lành mạnh uy tín chất lượng trên toàn Thế Giới</span></strong></span></h2>
           <p>&nbsp;</p>
           <h3 style="text-align: justify;"><span style="font-size: 11pt;"><span style="font-family: verdana, geneva, sans-serif;">Dưới sự chuẩn bị kỹ lưỡng và được cho ra mắt vào giữa cuối năm 2018 vừa qua, nhưng đã được nhiều sự quan tâm và đánh giá tích cực từ giới Gamer , Streamer về độ chuyên nghiệp cũng như đã giúp kết nối rất nhiều game thủ Việt đang sống trong và ngoài nước xích lại gần nhau hơn</span></span></h3>
           <p style="text-align: justify;">&nbsp;</p>
@@ -137,7 +146,7 @@
           <p style="text-align: justify;">&nbsp;</p>
           <p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 11pt;">Đồng thời, sự quay trở lại và lợi hại hơn xưa của các loại trò chơi trực tuyến nhập vai và sinh tồn HOT hiện nay như <strong>Pubg</strong>, <strong>LOL</strong>, <strong>Liên Quân</strong>, <strong>Nhất Kiếm Giang Hồ</strong>, <strong>Võ Lâm Truyền Kỳ</strong> … bạn có thể chọn cho mình một cạ cứng tại Luxury Garden với các mức phí từ 0.5$link/h – 25$link/h tùy theo trình độ và mức độ nổi tiếng của các Đào dựa trên các tựa game mình muốn chơi</span></p>
           <p style="text-align: justify;">&nbsp;</p>
-          <h4 style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 11pt;">&nbsp;<a href="thue_dao/sieupham"><img class="col-md-8 col-sm-10 ml-md-auto" src="img/gaixinh-index.jpg" alt="Gái xinh chơi game cùng" ></a></span></h4>
+          <h4 style="text-align: center;"><span style="font-family: verdana, geneva, sans-serif; font-size: 11pt;">&nbsp;<a href="login"><img class="col-md-8 col-sm-10 ml-md-auto" src="img/gaixinh-index.jpg" alt="Gái xinh chơi game cùng" ></a></span></h4>
           <h4 style="text-align: center;"><span style="font-size: 11pt;"><strong><span style="font-family: verdana, geneva, sans-serif;">Thuê người chơi game chung uy tín tại Luxury Garden</span></strong></span></h4>
           <p style="text-align: justify;">&nbsp;</p>
           <p style="text-align: justify;"><span style="font-family: verdana, geneva, sans-serif; font-size: 11pt;">Qua đây cho thấy cộng đồng Game thủ hiện nay ngày càng có sự đầu tư về chất lượng một cách nghiêm túc và ngày càng có nhiều cao thủ hơn trước. Còn chần chừ gì nữa mà không chọn ngay một Đào chơi game và làm việc cho bạn nhé! Hoặc&nbsp;</span><span style="font-family: verdana, geneva, sans-serif; font-size: 11pt;">nếu bạn tự tin mình cũng đang là một cao thủ cứng tay thì còn ngại gì mà không thử đăng ký trở thành Đào, biết đâu bạn sẽ là một&nbsp; người hùng cho trong cả team đó!</span></p>
@@ -151,11 +160,7 @@
       </div>
 
     </div>
-    <!--            <ul class="list-group list-group-horizontal-lg">-->
-    <!--                <li class="list-group-item">Girl 1</li>-->
-    <!--                <li class="list-group-item">Girl 2</li>-->
-    <!--                <li class="list-group-item">Girl 3</li>-->
-    <!--            </ul>-->
+
   </div>
 
   <hr>
