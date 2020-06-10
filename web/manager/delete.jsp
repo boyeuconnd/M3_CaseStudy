@@ -23,7 +23,7 @@
         <div class="container" style="min-height: 600px">
             <div class="row">
                 <div class="col-md-4 col-sm-12 col-xs-12 imgdiv">
-                    <img class="img-thumbnail" src="${deleteStaff.getImgUrl()}" alt="deleteStaff">
+                    <img class="img-thumbnail" src="${deleteStaff.getFullImg()}" alt="deleteStaff">
                 </div>
                 <div class="col-md-8 col-sm-12 col-xs-12 form-group">
                     <div class="my-3"><b>ID:</b> ${deleteStaff.getId()}</div>
