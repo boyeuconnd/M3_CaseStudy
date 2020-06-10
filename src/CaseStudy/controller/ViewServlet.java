@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.List;
 
 @WebServlet(name = "ViewServlet",urlPatterns = "/view")
@@ -29,13 +28,20 @@ public class ViewServlet extends HttpServlet {
         if(viewRank==null) viewRank="";
         switch (viewRank){
             case "ultra":
-                viewUltraRankStaff(request,response);
+                viewByRankStaff(request,response,EnumStaffRank.ultra);
                 break;
+            case "vip":
+                viewByRankStaff(request,response,EnumStaffRank.vip);
+                break;
+            case "basic":
+                viewByRankStaff(request,response,EnumStaffRank.basic);
+                break;
+
         }
     }
 
-    private void viewUltraRankStaff(HttpServletRequest request, HttpServletResponse response) {
-        List<Staff> ultraList = staffDAO.selectByStaff(EnumStaffRank.ultra);
+    private void viewByRankStaff(HttpServletRequest request, HttpServletResponse response, EnumStaffRank rank) {
+        List<Staff> ultraList = staffDAO.selectByStaff(rank);
         request.setAttribute("ultraList",ultraList);
         try {
             direction(request,response,"views/ultraRank.jsp");

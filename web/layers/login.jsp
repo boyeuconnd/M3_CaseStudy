@@ -37,34 +37,14 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    <a href="/register"><button type="button" class="btn btn-primary">You not register? Register for free now!</button></a>
                     <p style="text-align: center">
                         <c:if test="${requestScope['messenger']!=null}">
-                                                        <span style="color: green; font-size: 24px">${requestScope['messenger']}</span>
+                            <span style="color: green; font-size: 24px">${requestScope['messenger']}</span>
 
                         </c:if>
                     </p>
-<%--                    <form method="post">--%>
-<%--                        <table style="margin: 15px auto">--%>
 
-<%--                            <tr>--%>
-<%--                                <td><label for="user">User Name</label></td>--%>
-<%--                                <td><input type="text" name="user" id="user" placeholder="username"><br></td>--%>
-<%--                            </tr>--%>
-<%--                            <tr>--%>
-<%--                                <td><label for="password">Password</label></td>--%>
-<%--                                <td><input type="password" name="password" id="password" placeholder="password"></td>--%>
-<%--                            </tr>--%>
-<%--                            <tr>--%>
-<%--                                <td colspan="2"><button style="width: 100%;margin: 10px 0" type="submit">SUBMIT</button></td>--%>
-<%--                            </tr>--%>
-<%--                        </table>--%>
-<%--                        <p style="text-align: center">--%>
-<%--                            <c:if test="${requestScope['messenger']!=null}">--%>
-<%--                                <span style="color: green; font-size: 24px">${requestScope['messenger']}</span>--%>
-
-<%--                            </c:if>--%>
-<%--                        </p>--%>
-<%--                    </form>--%>
                 </div>
                 <div class="col-3"></div>
             </div>

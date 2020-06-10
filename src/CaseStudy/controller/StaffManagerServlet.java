@@ -132,10 +132,19 @@ public class StaffManagerServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
 
         Staff deleteStaff = staffDAO.selectById(id);
-        request.setAttribute("deleteStaff",deleteStaff);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("manager/delete.jsp");
         try {
-            dispatcher.forward(request, response);
+            HttpSession session = request.getSession();
+            if(session.getAttribute("isLogin")!=null){
+                Boolean isLogin = (Boolean)session.getAttribute("isLogin");
+                if(isLogin){
+                    request.setAttribute("deleteStaff",deleteStaff);
+                    direction(request,response,"manager/delete.jsp");
+                } else {
+                    response.sendRedirect("login");
+                }
+            } else {
+                response.sendRedirect("login");
+            }
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
