@@ -106,4 +106,9 @@ public class Staff {
         this.status = status;
         this.imgUrl = imgUrl;
     }
+    public String getFullImg(){
+        StringBuilder builder = new StringBuilder(this.imgUrl);
+        builder.delete(0,36);
+        return builder.toString();
+    }
 }
