@@ -41,7 +41,7 @@ public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create,
     }
 
     @Override
-    public void create(Staff staff) {
+    public boolean create(Staff staff) {
             Connection cnn = db_connection.getConnection();
             try {
                 PreparedStatement pstm = cnn.prepareStatement(INSERT_STAFF);
@@ -55,10 +55,10 @@ public class StaffDAO implements IStaffDAO_show,SQLsyntax, IStaffDAO_create,
                 pstm.setString(8, staff.getStatus());
                 pstm.setString(9, staff.getImgUrl());
                 pstm.executeUpdate();
+                return true;
 
             } catch (SQLException e) {
-                System.err.println("Error when create Staff");
-                e.printStackTrace();
+                return false;
             }
 
     }

@@ -20,6 +20,7 @@ public class CustomerFilter implements Filter {
         Object role = session.getAttribute("role");
         if(role==null){
             response.sendRedirect("/login");
+
         }else {
             chain.doFilter(req,resp);
         }

@@ -5,5 +5,5 @@ import CaseStudy.model.Staff;
 import java.sql.SQLException;
 
 public interface IStaffDAO_create {
-    void create(Staff staff) throws SQLException;
+    boolean create(Staff staff) throws SQLException;
 }

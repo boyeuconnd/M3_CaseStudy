@@ -120,14 +120,14 @@
             <input class="form-control mr-sm-4" type="search" placeholder="Tìm Đào tâm giao..." aria-label="Search">
             <a href="/login">
                 <%
-                    HttpSession ses = request.getSession();
-                    Boolean islogin = (Boolean)ses.getAttribute("isLogin");
+                    session = request.getSession();
+                    Boolean islogin = (Boolean)session.getAttribute("isLogin");
 
                 %>
                 <c:set var="login" value="<%=islogin%>"/>
                 <c:choose>
                     <c:when test="${login==true}">
-                        <%String displayName = ses.getAttribute("displayName").toString();%>
+                        <%String displayName = session.getAttribute("displayName").toString();%>
                         <a href="staff?action">
                             <button class="btn btn-secondary disabled" type="button">
 

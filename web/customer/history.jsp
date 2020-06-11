@@ -8,12 +8,12 @@
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <div class="container" style="min-height: 600px">
+        <div class="container" style="min-height: 600px;background-image: url('http://www.xiuren.org/xiuren2/XiuRen-N01892/0039.jpg');background-size: cover">
             <div class="row">
                 <div class="col-3"></div>
-                <div class="col-6 align-self-center mt-lg-5" >
+                <div style="background-color: white;opacity: 0.6"  class="col-6 align-self-center mt-lg-5" >
                     <h1 style="text-align: center">Transaction History</h1>
-                    <table class="table">
+                    <table style="font-weight: bold;color: black" class="table">
                         <thead class="thead-light">
                         <tr>
                             <th scope="col">BILLS NUMBER</th>
