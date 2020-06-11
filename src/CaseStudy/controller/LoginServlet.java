@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("isLogin",true);
             session.setAttribute("role",loginCustomer.getRole());
             session.setAttribute("displayName",loginCustomer.getAccount());
+            session.setAttribute("id",loginCustomer.getId());
             if(loginCustomer.getRole()==1){
                 response.sendRedirect("staff?action");
             }else {

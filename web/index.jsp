@@ -38,9 +38,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <!--            <li class="nav-item active">-->
-      <!--                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-      <!--            </li>-->
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           THUÊ ĐÀO
@@ -103,8 +101,8 @@
         <c:when test="${login==true}">
           <div class="list-group mt-lg-4">
             <a href="#" class="list-group-item list-group-item-action ">Cập nhật thông tin</a>
-            <a href="#" class="list-group-item list-group-item-action">Lịch sử giao dịch</a>
-            <a href="#" class="list-group-item list-group-item-action">Đặt Hàng</a>
+            <a href="customer?action=history" class="list-group-item list-group-item-action">Lịch sử giao dịch</a>
+            <a href="#" class="list-group-item list-group-item-action">Follow</a>
             <a href="#" class="list-group-item list-group-item-action">Voucher, khuyến mại</a>
             <a href="/logout" class="list-group-item list-group-item-action" tabindex="-1" aria-disabled="true">Log Out</a>
           </div>

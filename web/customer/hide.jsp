@@ -79,6 +79,7 @@
 </head>
 <body>
 
+
 <nav class="navbar sticky-top navbar-expand-lg " style="background-color: #c4d9ff">
     <a class="navbar-brand webBrand"  href="/">
         <img src="/img/logo.png" width="50" height=50" class="d-inline-block align-center" alt="logo" loading="lazy">
@@ -158,19 +159,19 @@
         <c:out value="${requestScope['messenger']}"/>
     </c:if>
 </p>
-<div class="container" style="min-height: 700px">
+<div class="container" style="min-height: 800px">
     <div class="row">
-        <div class="col-md-4 col-sm-12 col-xs-12 imgdiv">
+        <div class="col-md-5 col-sm-12 col-xs-12 imgdiv">
             <div style="position: relative">
                 <img style="max-height:100%;max-width: 100% " id="imgGirl"  src="${hideStaff.getFullImg()}" alt="hideStaff">
             </div>
         </div>
-        <div class="col-md-8 col-sm-12 col-xs-12 form-group py-lg-5 px-lg-4">
+        <div class="col-md-7 col-sm-12 col-xs-12 form-group py-lg-5 px-lg-4">
             <div class="my-3"><b>Nick Name:</b> ${hideStaff.getNickName()}</div>
             <div class="my-3"><b>Rank:</b> ${hideStaff.getRank().toUpperCase()}</div>
-            <div class="my-3"><b>Price:</b> ${hideStaff.getPrice()} USD/Hour</div>
+            <div class="my-3"><b>Price:</b> <span id="pph">${hideStaff.getPrice()}</span> USD/Hour</div>
             <form method="post">
-                <div class="my-3"><b>Service Time:</b> <input type="number" name="time" placeholder="Nhập số dương nhé.."> Hours</div>
+                <div class="my-3"><b>Service Time:</b> <input id="time" type="number" name="time" value="1" > Hours</div>
                 <div class="form-group">
                     <div class="d-flex justify-content-start">
                         <button type="submit" class="btn btn-danger mr-lg-5">ANH CÓ</button>
