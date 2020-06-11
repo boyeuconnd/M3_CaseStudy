@@ -79,6 +79,7 @@
 </head>
 <body>
 
+
 <nav class="navbar sticky-top navbar-expand-lg " style="background-color: #c4d9ff">
     <a class="navbar-brand webBrand"  href="/">
         <img src="/img/logo.png" width="50" height=50" class="d-inline-block align-center" alt="logo" loading="lazy">
@@ -168,9 +169,9 @@
         <div class="col-md-7 col-sm-12 col-xs-12 form-group py-lg-5 px-lg-4">
             <div class="my-3"><b>Nick Name:</b> ${hideStaff.getNickName()}</div>
             <div class="my-3"><b>Rank:</b> ${hideStaff.getRank().toUpperCase()}</div>
-            <div class="my-3"><b>Price:</b> ${hideStaff.getPrice()} USD/Hour</div>
+            <div class="my-3"><b>Price:</b> <span id="pph">${hideStaff.getPrice()}</span> USD/Hour</div>
             <form method="post">
-                <div class="my-3"><b>Service Time:</b> <input type="number" name="time" value="1" > Hours</div>
+                <div class="my-3"><b>Service Time:</b> <input id="time" type="number" name="time" value="1" > Hours</div>
                 <div class="form-group">
                     <div class="d-flex justify-content-start">
                         <button type="submit" class="btn btn-danger mr-lg-5">ANH CÓ</button>

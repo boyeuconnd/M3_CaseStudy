@@ -11,4 +11,7 @@ public interface SQLsyntax {
     String SELECT_BY_RANK = "SELECT * FROM staff WHERE staffRank = ?;";
     String CREATE_ORDER_BILL = "INSERT INTO order_bills(customer_id, staff_id, duration, create_time) VALUES (?,?,?,NOW());";
     String SET_STAFF_STATUS = "UPDATE staff SET staffStatus = 'busy' where id =?;";
+    String CHECK_HISTORY_TRADE_BY_CUS_ID ="select order_id,c.firstName,c.lastName,create_time," +
+            "o.duration,s.nickName from order_bills o join customer " +
+            "c on o.customer_id = c.id join staff s on o.staff_id = s.id where c.id =?;";
 }

@@ -1,6 +1,7 @@
 package CaseStudy.controller;
 
 import CaseStudy.model.Staff;
+import CaseStudy.model.TradeHistory;
 import CaseStudy.service.CustomerDAO;
 import CaseStudy.service.StaffDAO;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "CustomerServlet",urlPatterns = "/customer")
 public class CustomerServlet extends HttpServlet {
@@ -62,10 +64,27 @@ public class CustomerServlet extends HttpServlet {
             case "hide":
                 showHideForm(request,response);
                 break;
+            case "history":
+                showHistoryForm(request,response);
+                break;
             default:
                 break;
         }
 
+    }
+
+    private void showHistoryForm(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession sess = request.getSession();
+        int customId = (int)sess.getAttribute("id");
+        List<TradeHistory> historyList = customerDAO.exportHistory(customId);
+        request.setAttribute("historyList",historyList);
+        try {
+            direction(request,response,"customer/history.jsp");
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showHideForm(HttpServletRequest request, HttpServletResponse response) {

@@ -1,13 +1,19 @@
 package CaseStudy.service;
 
+import CaseStudy.model.TradeHistory;
+import CaseStudy.service.ICustomerDAO.ICustomerDAO_hide;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CustomerDAO implements SQLsyntax {
+public class CustomerDAO implements SQLsyntax, ICustomerDAO_hide {
     DB_Connection db_connection = DB_Connection.getInstance();
 
-
+    @Override
     public void hideStaff(int staff_id, int customer_id,int service_time) {
         Connection cnn = db_connection.getConnection();
         PreparedStatement pstm_staff=null;
@@ -45,5 +51,32 @@ public class CustomerDAO implements SQLsyntax {
             }
 
         }
+    }
+
+    public List<TradeHistory> exportHistory(int customId) {
+        List<TradeHistory> historyList = new ArrayList<>();
+        Connection cnn = db_connection.getConnection();
+        try {
+            PreparedStatement pstm = cnn.prepareStatement(CHECK_HISTORY_TRADE_BY_CUS_ID);
+            pstm.setInt(1,customId);
+            ResultSet rs = pstm.executeQuery();
+            if(rs==null){
+                return historyList;
+            }else {
+                while (rs.next()){
+                    int id = rs.getInt("order_id");
+                    String cusFirstName = rs.getString("firstName");
+                    String cusLastName = rs.getString("lastName");
+                    String create_time = rs.getString("create_time");
+                    int duration = rs.getInt("duration");
+                    String staffNickName = rs.getString("nickName");
+                    historyList.add(new TradeHistory(id,cusFirstName,cusLastName,create_time,duration,staffNickName));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error when exportHistory");
+            e.printStackTrace();
+        }
+        return historyList;
     }
 }
