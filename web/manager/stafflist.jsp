@@ -24,8 +24,9 @@
 
 
                     <form method="post">
-                        <table border="1px" style="max-width: 100%">
-                            <tr>
+                        <table class="table table-dark table-striped table-hover"  style="max-width: 100%">
+                            <thead>
+                                <tr>
                                 <th>ID</th>
                                 <th>FirstName</th>
                                 <th>LastName</th>
@@ -36,7 +37,9 @@
                                 <th>Status</th>
                                 <th>IMG</th>
                             </tr>
-                            <c:forEach var="staff" items="${stafflist}">
+                            </thead>
+                            <tbody>
+                                <c:forEach var="staff" items="${stafflist}">
                                 <tr>
                                     <td><c:out value="${staff.getId()}"/></td>
                                     <td><c:out value="${staff.getFirstName()}"/></td>
@@ -46,14 +49,13 @@
                                     <td><c:out value="${staff.getPrice()}"/></td>
                                     <td><c:out value="${staff.getRank()}"/></td>
                                     <td><c:out value="${staff.getStatus()}"/></td>
-<%--                                    <td><c:out value="${staff.getImgUrl()}"/></td>--%>
+                                        <%--                                    <td><c:out value="${staff.getImgUrl()}"/></td>--%>
                                     <td><img src="<c:out value="${staff.getImgUrl()}"/>" alt="girl<c:out value="${staff.getId()}"/>"></td>
                                     <td><a href="staff?action=update&id=${staff.getId()}">Update Info</a></td>
                                     <td><a href="staff?action=delete&id=${staff.getId()}">Delete</a></td>
                                 </tr>
                             </c:forEach>
-
-
+                            </tbody>
 
                         </table>
                     </form>

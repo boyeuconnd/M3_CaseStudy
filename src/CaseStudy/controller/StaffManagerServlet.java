@@ -85,8 +85,13 @@ public class StaffManagerServlet extends HttpServlet {
         String rank = request.getParameter("staffRank");
         String status = request.getParameter("staffStatus");
         String img = request.getParameter("imgUrl");
-        staffDAO.create(new Staff(id,firstName,lastName,nickName,description,price,rank,status,img));
-        request.setAttribute("messenger","Staff Added");
+        boolean result = staffDAO.create(new Staff(id,firstName,lastName,nickName,description,price,rank,status,img));
+        if(result){
+            request.setAttribute("messenger","Staff Added");
+
+        }else {
+            request.setAttribute("messenger","ID had existed on system");
+        }
 
         try {
             direction(request,response,"manager/create.jsp");
@@ -218,7 +223,7 @@ public class StaffManagerServlet extends HttpServlet {
         List<Staff> staffList = staffDAO.showAllStaff();
         request.setAttribute("stafflist",staffList);
         try {
-            direction(request,response,"layers/stafflist.jsp");
+            direction(request,response,"manager/stafflist.jsp");
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {

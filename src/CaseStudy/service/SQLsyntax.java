@@ -14,4 +14,5 @@ public interface SQLsyntax {
     String CHECK_HISTORY_TRADE_BY_CUS_ID ="select order_id,c.firstName,c.lastName,create_time," +
             "o.duration,s.nickName from order_bills o join customer " +
             "c on o.customer_id = c.id join staff s on o.staff_id = s.id where c.id =?;";
+    String SELECT_CUSTOMER_BY_ID ="SELECT * FROM customer WHERE id = ?;";
 }

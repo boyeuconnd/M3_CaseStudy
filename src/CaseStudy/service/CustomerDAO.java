@@ -1,6 +1,8 @@
 package CaseStudy.service;
 
+import CaseStudy.model.Customer;
 import CaseStudy.model.TradeHistory;
+import CaseStudy.service.ICustomerDAO.ICustomerDAO_exportHistory;
 import CaseStudy.service.ICustomerDAO.ICustomerDAO_hide;
 
 import java.sql.Connection;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerDAO implements SQLsyntax, ICustomerDAO_hide {
+public class CustomerDAO implements SQLsyntax, ICustomerDAO_hide, ICustomerDAO_exportHistory {
     DB_Connection db_connection = DB_Connection.getInstance();
 
     @Override
@@ -53,6 +55,8 @@ public class CustomerDAO implements SQLsyntax, ICustomerDAO_hide {
         }
     }
 
+
+    @Override
     public List<TradeHistory> exportHistory(int customId) {
         List<TradeHistory> historyList = new ArrayList<>();
         Connection cnn = db_connection.getConnection();
@@ -78,5 +82,29 @@ public class CustomerDAO implements SQLsyntax, ICustomerDAO_hide {
             e.printStackTrace();
         }
         return historyList;
+    }
+
+    public Customer selectCustomerById(int customId) {
+        Connection cnn = db_connection.getConnection();
+        Customer customer = null;
+        try {
+            PreparedStatement pstm = cnn.prepareStatement(SELECT_CUSTOMER_BY_ID);
+            pstm.setInt(1,customId);
+            ResultSet rs = pstm.executeQuery();
+            while (rs.next()){
+
+                String selectedUserName = rs.getString("userName");
+                String selectedFistName = rs.getString("firstName");
+                String selectedLastName = rs.getString("lastName");
+                String selectedEmail = rs.getString("email");
+                String selectedPassword = rs.getString("password");
+                int selectedRole = rs.getInt("role");
+                customer = new Customer(customId,selectedFistName,selectedLastName,selectedEmail,selectedUserName,selectedLastName,selectedRole);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customer;
     }
 }

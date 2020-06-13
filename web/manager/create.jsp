@@ -1,17 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Admin
-  Date: 07/06/2020
-  Time: 10:29 AM
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <t:genericPage>
     <jsp:attribute name="header">
         <h1 style="text-align: center">Add Staff</h1>
-        <p style="text-align: center;color: green">
+        <p style="text-align: center;color: green;font-size: 25px">
             <c:if test="${requestScope['messenger']!=null}">
                 <c:out value="${requestScope['messenger']}"/>
             </c:if>
@@ -20,9 +14,9 @@
     <jsp:attribute name="footer">
     </jsp:attribute>
     <jsp:body>
-        <div class="container" style="min-height: 600px">
+        <div class="container" style="min-height: 800px;background-image: url('http://www.xiuren.org/xiuren2/XiuRen-N01867/0036.jpg');background-size: cover;background-position: bottom">
             <form method="post">
-                <div class="form-row">
+                <div style="background-color: white;opacity: 0.6;font-weight: bold;color: black" class="form-row">
                     <div class="form-group col-md-12">
                         <label for="id">ID</label>
                         <input type="number" class="form-control" name="id" id="id">
